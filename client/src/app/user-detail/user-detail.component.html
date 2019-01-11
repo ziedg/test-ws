@@ -1,0 +1,25 @@
+
+
+
+
+<a [routerLink]="[ '/' ]"> Retrun Home</a>
+  <h2  class="text-primary  m-3 p-3" >  User List   of  Objects </h2>
+
+<div class="row container">
+
+      <div
+       style="  box-shadow: 3px 6px #eee ;border-radius: 8px;"
+      *ngFor='let detail of userDetails  | async ' class="card col-md-5 m-2 p-2 " >
+          <div class="card-body">
+
+                 <h5 class="card-title"> {{detail.nom}}</h5>
+                 <p class="card-text"> {{detail.description}}</p>
+                 <p class="card-text"> {{detail.prix | currency}}</p>
+                 <a href="#" class="btn btn-outline-secondary"> Edit </a>
+               </div>
+
+
+  </div>
+</div>
+
+

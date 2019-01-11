@@ -1,0 +1,36 @@
+
+
+
+
+
+
+
+<h1 class='display-2  text-primary'>
+
+
+    List users
+
+    </h1>
+    <div class="container">
+    <ul  class="list-group">
+
+      <li     class="list-group-item  m-2  p-3  "  style='margin-left: 120px;margin-right: 120px;'     *ngFor="let user of showedUsers   " >
+
+        <h6>     Nom :  {{user?.nom}}  </h6>
+
+        <h6>    Prenom :    {{user?.prenom}}  </h6>
+          <button class='btn btn-outline-secondary '  (click)=' handleClick(user)'> show more </button>
+
+      </li>
+    </ul>
+
+
+    </div>
+
+
+    <div class='row  mt-3'   >
+      <div class="col"><button   (click)="prev()"  class="btn btn-outline-success"   >  Previous </button></div>
+      <div class="col">  <button  (click)="next()"  class="btn btn-outline-success" style='float:right;'> Next  </button> </div>
+    </div>
+
+
