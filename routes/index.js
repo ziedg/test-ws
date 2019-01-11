@@ -62,10 +62,9 @@ app.post('/api/user/getUserInfo', async (req,res)=>{
 })
 
 
-app.post('/api/user/getUsersInfos', async (req,res)=>{
-    const {nom}= req.body;
+app.get('/api/user/getUsersInfos', async (req,res)=>{
     try{
-       const  users =  await User.find({nom})
+       const  users =  await User.find({})
        
          users && res.send(users);
     }
@@ -80,9 +79,12 @@ app.post('/api/user/getUsersInfos', async (req,res)=>{
 app.post('/api/user/articles', async (req,res)=>{
     const {email }= req.body;
     try {
-        const {_id }=  await User.findOne({email});
-        const articles = await Article.find({proprietaire:_id});
-        articles  && res.send({articles});
+        const { _id  }=  await User.findOne({email});
+        if (_id ){
+            const articles = await Article.find({proprietaire:_id});
+            articles  && res.send({articles});
+        }
+  
         
     } catch (error) {
         console.error(error);

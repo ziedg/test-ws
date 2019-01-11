@@ -1,5 +1,6 @@
 
 const  express = require('express');
+const cors = require('cors');
 const bodyparser = require('body-parser');
 const PORT = 3000;
 
@@ -13,6 +14,7 @@ const  app = express()
 
     //middlewares
  app.use(bodyparser.json());
+ app.use(cors());
  
 
  //require routes
