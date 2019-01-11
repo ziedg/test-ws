@@ -3,14 +3,14 @@ const Schema = mongoose.Schema;
 
 
 
-const articlerSchema =  new Schema({
-    _id:mongoose.Types.ObjectId,
-    nom:String,
+const articleSchema =  new Schema({
+      nom:String,
     description:String,
-    prix:String,
+    prix:Number,
     proprietaire: { type: Schema.Types.ObjectId, ref: 'user' }
 
 })
 
 
-mongoose.model('article',articleSchema)
+const article = mongoose.model('article',articleSchema)
+module.exports=article;

@@ -1,7 +1,7 @@
 
 const  express = require('express');
 const bodyparser = require('body-parser');
-const PORT = 3000 | process.env.PORT
+const PORT = 3000;
 
 const connectDb = require('./db/index');
 
@@ -16,12 +16,14 @@ const  app = express()
  
 
  //require routes
+ app.get('/',(req,res)=>{
+   res.send('Im ok')
+ })
  require('./routes/index')(app);
 
 
 
-
-app.listen(()=>{
-    console.log('the app is up at Port ',PORT);
+app.listen(PORT,()=>{
+    console.log("the server is Listening At PORT ",PORT);
 })
 
