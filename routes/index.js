@@ -81,7 +81,10 @@ app.post('/api/user/articles', async (req,res)=>{
     try {
         const { _id  }=  await User.findOne({email});
         if (_id ){
-            const articles = await Article.find({proprietaire:_id});
+            const articles = await Article.find({proprietaire:_id})
+            .populate('proprietaire')
+              
+
             articles  && res.send({articles});
         }
   

@@ -3,6 +3,7 @@ import User from '../../models/user';
 import { UsersService } from './../users.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-users',
@@ -37,15 +38,24 @@ if ( start < this.users.length) {
 
       if ( end <= this.users.length) {
         this.endIndex += 5 ;
-        console.log(this.startIndex,this.endIndex);
+        console.log(this.startIndex, this.endIndex);
         this.showedUsers = this.users.slice(this.startIndex, this.endIndex);
-        console.log(this.startIndex,this.endIndex);
+        console.log(this.startIndex, this.endIndex);
         } else {
-         this.endIndex+=5;
+         this.endIndex += 5;
         this.showedUsers = this.users.slice(this.startIndex);
         console.log(this.startIndex,this.endIndex);
       }
 }
+}
+
+trier(val: string) {
+
+
+
+  const  arr  = _.orderBy(this.showedUsers, [ user  => user[val].toLowerCase()], ['asc']);
+
+        this.showedUsers = arr;
 }
 
 prev() {

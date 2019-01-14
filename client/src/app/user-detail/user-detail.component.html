@@ -2,20 +2,30 @@
 
 
 
-<a [routerLink]="[ '/' ]"> Retrun Home</a>
-  <h2  class="text-primary  m-3 p-3" >  User List   of  Objects </h2>
+<a [routerLink]="[ '/' ]"   class='text-success'> <i class="fa fa-hand-o-left" aria-hidden="true">
 
-<div class="row container">
+
+    Retrun Home
+</i></a>
+  <h2  class="text-success p-2"  style='text-shadow: 4px 2px mistyrose ;'>  Les objets de :
+
+    {{(userDetails  | async)[0].proprietaire.nom | uppercase}}
+    {{(userDetails  | async)[0].proprietaire.prenom | uppercase}}
+
+
+  </h2>
+
+<div class="row container m-3 p-5">
 
       <div
-       style="  box-shadow: 3px 6px #eee ;border-radius: 8px;"
+       style="  box-shadow: 4px 8px #eee ;border-radius: 12px;"
       *ngFor='let detail of userDetails  | async ' class="card col-md-5 m-2 p-2 " >
           <div class="card-body">
 
-                 <h5 class="card-title"> {{detail.nom}}</h5>
-                 <p class="card-text"> {{detail.description}}</p>
-                 <p class="card-text"> {{detail.prix | currency}}</p>
-                 <a href="#" class="btn btn-outline-secondary"> Edit </a>
+                 <h5 class="card-title text-warning"> <b> Nom d'object :  {{detail.nom | uppercase}}   </b></h5>
+                 <p class="card-text">  Description :  {{detail.description}}</p>
+                 <p class="card-text">   Prix (en $)  :  {{detail.prix | currency}}</p>
+                 <a  class="btn btn-outline-warning text-warning"> Edit </a>
                </div>
 
 
